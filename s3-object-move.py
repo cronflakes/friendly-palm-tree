@@ -4,10 +4,8 @@ from datetime import date
 
 def lambda_handler(event, context):
     # TODO implement
-    today = str(date.today())
+    date_buckets = [] 
     s3_client = boto3.client('s3')
-    date_buckets = []
-    new_buckets = []
 
     #get all possible object dates from tierpoint bucket 
     for key in s3_client.list_objects(Bucket='tierpoint')['Contents']:
