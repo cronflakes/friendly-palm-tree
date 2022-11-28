@@ -6,7 +6,11 @@ def lambda_handler(event, context):
     db = boto3.client('dynamodb') 
     ec2 = boto3.client('ec2') 
    
-    ec2_inst = ec2.run_instances(ImageId='ami-04f6621d886139d05', InstanceType='t2.micro', MinCount=1, MaxCount=1) 
+    ec2_inst = ec2.start_instances(InstanceIds=['i-09ae6b7d1f332d4c6'],)
+    ec2_inst.wait_until_running()
+    
+    #this is failing because the ec2 instances may have a status of running, but the OS may not be fully booted (and the systemd service may not even be fully running either)
+    #check whether boto3 has an API for checking systemd services after lunch
     
     res = db.scan(TableName='linux-challenge')
     #print(res['Items'][0]['date']['S']) 
