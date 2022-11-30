@@ -79,3 +79,4 @@ def cleanIAMRolesAndProfiles(iam, role, profile):
         #must remove role from instance profiles
         #doing this on the terminal was so much faster
         #aws iam remove-role-from-instance-profile --instance-profile-name linux-challenge-5-profile --role-name linux-challenge-1-role 
+        #just use this next time matt@ubuntu3:~$ aws iam list-instance-profiles | grep <role name>
