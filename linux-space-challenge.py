@@ -77,3 +77,5 @@ def cleanIAMRolesAndProfiles(iam, role, profile):
     except iam.exceptions.DeleteConflictException as e:
         print(e)
         #must remove role from instance profiles
+        #doing this on the terminal was so much faster
+        #aws iam remove-role-from-instance-profile --instance-profile-name linux-challenge-5-profile --role-name linux-challenge-1-role 
